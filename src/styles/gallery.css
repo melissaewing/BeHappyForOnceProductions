@@ -1,0 +1,14 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.galleryContainer {
+    padding: 10%;
+}
+
+h1 {
+    font-size: x-large;
+    margin: 30px;
+}

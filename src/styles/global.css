@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Above";
+  src: url(../fonts/ABOVE.ttf) format("truetype");
+  src: local('Above'), url(../fonts/ABOVE.ttf) format('truetype');
+
+}
+
+body, html {
+  height: 100%;
+  overscroll-behavior: none;
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+h1 {
+  font-family: "Above", Verdana, Tahoma;
+  color: white;
+}

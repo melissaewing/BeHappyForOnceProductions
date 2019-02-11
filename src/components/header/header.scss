@@ -1,0 +1,298 @@
+
+/* ICON STYLES - ICON FROM: http://fontastic.me/
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@font-face {
+    font-family: "untitled-font-1";
+    src:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/untitled-font-1.eot");
+    src:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/untitled-font-1.eot#iefix") format("embedded-opentype"),
+      url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/untitled-font-1.woff") format("woff"),
+      url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/untitled-font-1.ttf") format("truetype"),
+      url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/untitled-font-1.svg#untitled-font-1") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"]:after,
+  [class*=" icon-"]:after {
+    font-family: "untitled-font-1";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-up-open-big { display: inline-block; }
+  
+  .icon-up-open-big:after {
+    content: "a";
+    font-size: 2.5em;
+    display: block;
+    -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+    color: black;
+    -webkit-transition: color .3s;
+            transition: color .3s;
+  }
+  
+  .icon-up-open-big:hover:after {
+      color: white;	
+  }
+  
+  .scroll-icon {
+      position: absolute;
+       left: 50%;
+    bottom: 30px;
+    padding: 0 10px;
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+  }
+  
+  
+  
+  /* HELPER CLASSES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .clearfix:before,
+  .clearfix:after {
+    content: "";
+    display: table;
+  }
+  
+  .clearfix:after {
+    clear: both;
+  }
+  
+  .l-left {
+      float: left;
+  }
+  
+  .l-right {
+      float: right;
+  }
+  
+  .end {
+      margin-top: 30px;
+      font-size: 3em;
+      font-weight: bold;
+      opacity: 0;
+      -webkit-transform: translateY(300px);
+          -ms-transform: translateY(300px);
+              transform: translateY(300px);
+      -webkit-transition: opacity, -webkit-transform 1s;
+              transition: opacity, transform 1s;
+      -webkit-transition-delay: 1s;
+              transition-delay: 1s;
+  }
+  
+  
+  
+  /* NAV STYLES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  header {
+      width: 100%;
+  }
+  
+  .header-top {
+      height: 50px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 12;
+      box-sizing: border-box;
+      background: #000000b8;
+  }
+  
+  .toggle-menu {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      float: right;
+  }
+  
+  .toggle-menu i {
+      position: absolute;
+      display: block;
+      height: 2px;
+      background: white;
+      width: 30px;
+      left: 10px;
+      -webkit-transition: all .3s;
+              transition: all .3s;
+  }
+  
+  .toggle-menu:hover i {
+    height:4px;
+  }
+  
+  .toggle-menu i:nth-child(1) {
+      top: 16px;
+  }
+  
+  .toggle-menu i:nth-child(2) {
+      top: 24px;
+  }
+  
+  .toggle-menu i:nth-child(3) {
+      top: 32px;
+  }
+  
+  .open-menu i:nth-child(1) {
+      top: 25px;
+      -webkit-transform: rotateZ(45deg);
+              transform: rotateZ(45deg);
+  }
+  
+  .open-menu i:nth-child(2) {
+      background: transparent;
+  }
+  
+  .open-menu i:nth-child(3) {
+      top: 25px;
+      -webkit-transform: rotateZ(-45deg);
+              transform: rotateZ(-45deg);
+  }
+  
+  nav {
+       height: 0;
+      opacity: 0;
+    box-sizing: border-box;
+      position: fixed;
+      top: 0px;
+      height: 50px;
+      width: calc(100% - 50px);
+    -webkit-transition: all 3s;
+            transition: all 3s;
+  }
+  
+  .open-menu ~ nav {
+      opacity: 1;
+      z-index: 15;
+      height: calc(100%-50px);
+  }
+  
+  nav ul {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+       font-family: "Above", Verdana, Tahoma;
+  }
+  
+  nav li {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+  }
+  
+  nav li a {
+      font-size: 1em;
+      font-weight: 900;
+      -webkit-transition: background .3s;
+              transition: background .3s;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    position: absolute;
+  }
+  
+  @keyframes noise-anim{
+    $steps:20;
+    @for $i from 0 through $steps{
+      #{percentage($i*(1/$steps))}{
+        clip:rect(random(100)+px,9999px,random(100)+px,0);
+      }
+    }
+  }
+  nav li a:hover:before,   nav li a:hover:after{
+    content:attr(data-text);
+    position: absolute;
+    top:0;
+    color: white;
+    background: black;
+    overflow: hidden;
+    clip:rect(0,900px,0,0); 
+    padding: 15px;
+  }
+  nav li a:hover:after{
+    content:attr(data-text);
+    left:2px;
+    text-shadow:-1px 0 red;
+    animation:noise-anim 2s infinite linear alternate-reverse;
+  }
+  
+  @keyframes noise-anim-2{
+    $steps:20;
+    @for $i from 0 through $steps{
+      #{percentage($i*(1/$steps))}{
+        clip:rect(random(100)+px,9999px,random(100)+px,0);
+      }
+    }
+  }
+  nav li a:hover:before{
+    content:attr(data-text);
+    left:-2px;
+    text-shadow:1px 0 blue; 
+    animation:noise-anim-2 3s infinite linear alternate-reverse;
+  }
+
+  nav li:nth-child a {
+      background-color: #8f9f63;
+  }
+  nav li a:hover, nav li.active a, {
+      border-bottom: 1px solid white;
+  }
+  
+  #fp-nav {
+      display: none;
+  }
+  
+  /* MQ STYLES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  @media screen and (max-width: 767px) {
+      nav ul {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+      }
+  
+      nav li {
+          margin-top: 1px;
+      }
+    
+    nav li a {
+      font-size: 1.5em;
+    }
+    
+    .scroll-icon {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    html {
+      
+    }
+    
+    .open-menu ~ nav {
+          padding: 20px 0;
+      }
+  
+      nav li a {
+          padding: 3px;
+      }
+  }
+  
