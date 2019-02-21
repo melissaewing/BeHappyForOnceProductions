@@ -1,5 +1,11 @@
 import React from "react"
 import YouTube from 'react-youtube'
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
 import galleryStyle from "./videoGallery.module.scss"
 
@@ -45,7 +51,7 @@ class Video extends React.Component {
             ref={"player"}
             videoId={this.props.embed}
             opts={opts}
-            className={this.props.fullScreen ? galleryStyle.fullScreen 
+            className={this.props.fullScreen ? (!isMobile ? galleryStyle.fullScreen : galleryStyle.previewVideo)
               : ((this.props.preview||this.props.play) ? galleryStyle.previewVideo 
               :  galleryStyle.hidden)}
             onReady={this._onReady}

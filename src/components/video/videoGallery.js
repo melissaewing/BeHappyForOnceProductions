@@ -86,25 +86,22 @@ class VideoGallery extends React.Component {
     render() {
     return (
     <div>
-        
-    <div className={galleryStyle.TVContainer}>
-
-    <div className={galleryStyle.TV}>
-
-    <div className={galleryStyle.previewVideoContainer}>
-        <TV previewNode={this.state.previewNode} playNode={this.state.playNode}></TV>
-            {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
-                <Video key={node.id}
-                   embed={node.frontmatter.embed}
-                   preview={(node!=null&&node==this.state.previewNode)}
-                   play={(node!=null&&node==this.state.playNode)}
-                   fullScreen={(node!=null&&node==this.state.playNode&&this.state.fullScreen)}
-                >
-                </Video>
-            ))}
+        <div className={galleryStyle.TVContainer}>
+            <div className={galleryStyle.TV}>
+                <div className={galleryStyle.previewVideoContainer}>
+                    <TV previewNode={this.state.previewNode} playNode={this.state.playNode}></TV>
+                    {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
+                        <Video key={node.id}
+                            embed={node.frontmatter.embed}
+                            preview={(node!=null&&node==this.state.previewNode)}
+                            play={(node!=null&&node==this.state.playNode)}
+                            fullScreen={(node!=null&&node==this.state.playNode&&this.state.fullScreen)}
+                        >
+                        </Video>
+                    ))}
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
         <VideoGalleryContainer>
         {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
             <Thumb key={node.id} 
