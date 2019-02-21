@@ -29,7 +29,7 @@ class Header extends React.Component {
     render() {
         return (
         <header>
-            <div className={"header-top clearfix " + this.state.menuClass}>
+            <div className={"header-top " + this.state.menuClass}>
                 <a id="toggle" className="toggle-menu" href="#" onClick={this.toggleNav}>
                     <i></i>
                     <i></i>
@@ -37,7 +37,7 @@ class Header extends React.Component {
                 </a>
             </div>
 
-            <nav className="hide">
+            <nav>
                 <ul id="menu">
                     <MenuItem to="/" name="home"/>
                     <MenuItem to="/about" name="about"/>

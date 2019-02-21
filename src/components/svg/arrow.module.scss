@@ -1,0 +1,70 @@
+ .arrowSVG {
+      display: inline-block;
+      -webkit-transition: all 0.5s ease;
+      position: absolute;
+      right: 100px;
+      bottom: 100px;
+      z-index: 10;
+      .arrow, .circle {
+        stroke-width: 1;
+        stroke-linecap: "round";
+        stroke-linejoin: "round";
+        stroke-miterlimit: "10";
+        fill: none;
+      }
+      .circle {
+        stroke: white;
+        stroke-dasharray: 650;
+        stroke-dashoffset: 650;
+        -webkit-transition: all 0.5s ease-in-out;
+        opacity: 0.3;
+      }
+      .arrow {
+        -webkit-transition: all 0.7s ease-in-out;
+        stroke-dasharray: 240;
+        stroke-dashoffset: 480;
+        stroke: white;
+        transform: translateY(0) 
+       }
+    }
+
+  .arrowSVG:hover {
+    -webkit-transition: all 0.2s ease-out;
+       -moz-transition: all 0.2s ease-out;
+        -ms-transition: all 0.2s ease-out;
+         -o-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+    .arrow {
+      stroke-dashoffset: 0;
+      opacity: 1;
+      stroke: white;
+      animation: nudge 0.7s ease-in-out;
+      
+      @keyframes nudge{
+        0% {
+          transform: translateX(0)  
+        }
+        30% {
+          transform: translateX(-5px)
+        }
+        50% {
+          transform: translateX(5px)
+        }
+        70% {
+          transform: translateX(-2px)
+        }
+        100% {
+          transform: translateX(0)
+        }
+      }
+    }
+    .circle {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+    
+  
+    
+    
+  

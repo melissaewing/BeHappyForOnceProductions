@@ -1,0 +1,124 @@
+.galleryContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  top: 50px;
+}
+.TVContainer {
+  height: 100vh;
+  width: 50vw;
+  margin: 0 5vw;
+  display: table;
+  .TV  {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .previewVideoContainer {
+    background-image: url('../../images/TV.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 50vw;
+    width: 50vw;
+    margin: 0px auto;
+    display: block;
+    position: relative;
+  }
+  .static, .previewVideo {
+    position: absolute;
+    width: 90%;
+    height: 54%;
+    top: 20%;
+    left: 0;
+    margin: 5%;
+  }
+  .description {
+    height: 150px;
+  }
+}
+
+/*.fullScreen {
+  position: fixed;
+  -webkit-transition: all 1s ease-in-out;
+     -moz-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+       -o-transition: all 1s ease-in-out;
+          transition: all 1s ease-in-out;
+
+        left:0;
+        top:0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 100;
+}*/
+
+.hidden {
+  display:none;
+}
+
+.closeButton {
+    width: 50px;
+    height: 50px;
+    z-index: 200;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+.closeButton i {
+  position: absolute;
+  display: block;
+  height: 2px;
+  background: white;
+  width: 30px;
+  left: 10px;
+  -webkit-transition: all .3s;
+          transition: all .3s;
+  } 
+.closeButton:hover i { height:4px; }
+.closeButton i:nth-child(1) { top: 16px; }
+.closeButton i:nth-child(2) { top: 24px; }
+.closeButton i:nth-child(3) { top: 32px; }
+
+.closeButton i:nth-child(1) {
+top: 25px;
+-webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+}
+.closeButton i:nth-child(2) {
+background: transparent;
+}
+.closeButton i:nth-child(3) {
+top: 25px;
+-webkit-transform: rotateZ(-45deg);
+        transform: rotateZ(-45deg);
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+  .galleryContainer {
+    height:100vh;
+    width: 100vw;
+    top: 0vh;
+  }
+  .scrollContainer {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  .TVContainer {
+    height: 50vh;
+    width: 90vw;
+    .previewVideoContainer {
+      height: 50vh;
+      width: 50vh;
+      margin-top: 2vh;
+    }
+    .description {
+      width: 50vh;
+      height: 15vh;
+      font-size: .8em;
+      margin: 0 auto;
+    }
+  }
+}

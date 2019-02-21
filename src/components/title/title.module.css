@@ -6,11 +6,11 @@
 
 #headertext {
     position: relative;
-    top: 65%;
-    left: 5%;
+    top: 65vh;
+    left: 5vw;
     color: white;
     font-family: "Above", Verdana, Tahoma;
-  z-index: 999;
+    z-index: 999;
 }
 
 /* GLITCH TEXT */
@@ -22,20 +22,19 @@
  text set in the data-text attribute. */
  .text, .glitch {
     position: absolute;
-    width: 100%;
-    font-size: 4em;
+    font-size: 8.5vw;
     /* Animation provies a slight random skew. Check bottom of doc
      for more information on how to random skew. */
   /*  animation: glitch-skew 10s linear 0s infinite alternate-reverse both running;*/
   }
   .text {
-      letter-spacing: .1em;
-      word-spacing: -.2em;
+      letter-spacing: .1vw;
+      word-spacing: -1.8vw;
       animation: flicker-out-anim 10s linear 0s infinite alternate-reverse both running;
   
   }
   .glitch {  
-      letter-spacing: .18em;
+      letter-spacing: .7vw;
       animation: flicker-in-anim 10s linear 0s infinite alternate-reverse both running;
   }
   .text::before, .glitch::before, .text::after, .glitch::after {
@@ -490,3 +489,39 @@
       transform: skew(-2deg);
     }
   }
+
+    /* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+  /* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+}

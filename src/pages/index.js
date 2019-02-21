@@ -1,53 +1,25 @@
 import React from "react"
-import { graphql } from "gatsby"
 
 import Header from "../components/header/header"
 import Title from "../components/title/title"
-import GlitchVideoContainer from "../components/container/glitchVideoContainer"
+import GlitchVideo from "../components/video/glitchVideo"
 
-export default ({ data }) => {
-  console.log(data);
+import Arrow from "../components/svg/arrow"
+import gvcStyle from "../components/video/glitchVideoContainer.module.css"
+
+export default () => {
   return (
     <div>
         <Header></Header>
         <Title></Title>
-        <GlitchVideoContainer data={data}></GlitchVideoContainer>
+        <Arrow/>
+        <div className={gvcStyle.videoContainer}>
+            <div className={gvcStyle.videoBackground}>
+                <div className={gvcStyle.videoForeground}>
+                    <GlitchVideo embed="_VMDl_Xi7-A"></GlitchVideo>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
-
-
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-            embed
-          }
-          fields {
-              slug
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`
-
-/*
-export const query = graphql`
-  query LwypPlaylist {
-    ytPlaylist(id: { eq: "lwypPlaylist" }) {
-      childrenYtVideo {
-        id
-        title
-        description
-      }
-    }
-  }
-`*/

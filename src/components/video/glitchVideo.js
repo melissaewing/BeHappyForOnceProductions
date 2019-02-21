@@ -1,28 +1,9 @@
 import React from "react"
 import YouTube from 'react-youtube'
 
-import "./glitchVideo.scss"
-
 class GlitchVideo extends React.Component {
     constructor(props) {
         super(props);
-        this.activate = this.activate.bind(this);
-    }
-    componentDidMount() {
-        const elm = document.getElementById(this.props.id);
-        elm.addEventListener('animationend', this.activate);
-    }
-    componentWillUnmount () {
-      const elm = document.getElementById(this.props.id);
-      elm.removeEventListener('animationend', this.activate);
-    }
-    activate() {
-        if (this.props.className=="scrollin") {
-            this.refs.player.internalPlayer.playVideo();
-
-        } else {
-           this.refs.player.internalPlayer.pauseVideo();
-        }
     }
     render() {
     const opts = {

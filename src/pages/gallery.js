@@ -2,28 +2,16 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Header from "../components/header/header"
-import Thumb from "../components/video/thumb"
-
-import "../styles/gallery.css"
+import VideoGallery from "../components/video/videoGallery";
 
 export default ({ data }) => {
   return (
   <div>
-    <Header></Header>
-     <div className="galleryContainer">
-        <h1>
-          Gallery
-        </h1>
-        <div className="gallery">
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-            <Thumb key={node.id} embed={node.frontmatter.embed} slug={node.fields.slug} title={node.frontmatter.title}></Thumb>
-        ))}
-        </div>
-    </div>
+      <Header></Header>
+      <VideoGallery data={data}/>
   </div>
   )
 }
-
 
 export const query = graphql`
   query {
@@ -32,6 +20,7 @@ export const query = graphql`
       edges {
         node {
           id
+          html
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
@@ -46,16 +35,3 @@ export const query = graphql`
     }
   }
 `
-
-/*
-export const query = graphql`
-  query LwypPlaylist {
-    ytPlaylist(id: { eq: "lwypPlaylist" }) {
-      childrenYtVideo {
-        id
-        title
-        description
-      }
-    }
-  }
-`*/

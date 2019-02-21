@@ -1,13 +1,15 @@
 import React from "react"
 import Header from "../components/header/header"
-import Container from "../components/container/container"
 
 export default ({ data }) => {
+  const aboutStyle = {
+    padding: '10%',
+    maxWidth: '500px'
+  };
   return (
     <div>
         <Header></Header>
-        <div>
-        Be Happy For Once is a production collective for musicians, performance artists, and media artists located in Brooklyn, NY.
+        <div style={aboutStyle}>Be Happy For Once is a production collective for musicians, performance artists, and media artists located in Brooklyn, NY.
         </div>
     </div>
   )
