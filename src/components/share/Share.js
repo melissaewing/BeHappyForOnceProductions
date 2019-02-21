@@ -6,7 +6,7 @@ import {
 	TwitterShareButton,
 } from 'react-share';
 
-import './Share.scss';
+import './share.scss';
 
 class Share extends React.Component {
   render() {
