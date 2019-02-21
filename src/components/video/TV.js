@@ -7,6 +7,9 @@ import MovingStatic from "../movingStatic"
 import galleryStyle from "./videoGallery.module.scss"
 
 class TV extends React.Component {
+    componentDidUpdate() {
+        console.log("update TV");
+    }
     render() {
 
     const Static = styled.div `
@@ -21,15 +24,12 @@ class TV extends React.Component {
         background-position: bottom;
     `
     return (
-    <div className={galleryStyle.TVContainer}>
-        <div className={galleryStyle.TV}>
+        <div>
             <TVImg id="TV" className={galleryStyle.previewVideoContainer}>
                 <Static className={galleryStyle.static}></Static>
-                {this.props.children}
             </TVImg>   
             <div className={galleryStyle.description} dangerouslySetInnerHTML={{ __html: this.props.previewNode == null ? "<p>hey this is a descript sdfkladsjfklsda wooooo this is longer </p><p>ok here it is her it sssssss wajekrl woooo </p> <p> tup lst paragrampsdf  </p>" : this.props.previewNode.html}}></div>
         </div>
-    </div>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Header from "../components/header/header"
 import Video from "../components/video/video"
-import videoStyle from "../components/video/video.module.css"
+//import videoStyle from "../components/video/video.module.css"
 
 import Share from "../components/share/Share"
 
@@ -22,7 +22,7 @@ export default ({ data }) => {
   console.log(data);
   return (
     <div>
-    <Header></Header>
+    {/*<Header></Header>
     <div>
       <div className={videoStyle.videoContainer}>
         <Link to="../../">Back to videos...</Link>
@@ -35,8 +35,8 @@ export default ({ data }) => {
         title={title}
         twitterHandle={twitterHandle}
         tags={tags}
-      ></Share>
-    </div>
+      ></Share> 
+    </div>*/}
     </div>
   )
 }

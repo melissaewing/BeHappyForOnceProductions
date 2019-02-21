@@ -11,8 +11,7 @@ import TV from "./TV"
 import VideoGalleryContainer from "./videoGalleryContainer"
 import Video from "./video"
 
-import galleryStyle
- from "./videoGallery.module.scss"
+import galleryStyle from "./videoGallery.module.scss"
 
 class VideoGallery extends React.Component {
     constructor(props) {
@@ -87,17 +86,25 @@ class VideoGallery extends React.Component {
     render() {
     return (
     <div>
-        <TV previewNode={this.state.previewNode} playNode={this.state.playNode}>
+        
+    <div className={galleryStyle.TVContainer}>
+
+    <div className={galleryStyle.TV}>
+
+    <div className={galleryStyle.previewVideoContainer}>
+        <TV previewNode={this.state.previewNode} playNode={this.state.playNode}></TV>
             {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
-                <Video key={node.id} className={galleryStyle}
+                <Video key={node.id}
                    embed={node.frontmatter.embed}
                    preview={(node!=null&&node==this.state.previewNode)}
                    play={(node!=null&&node==this.state.playNode)}
                    fullScreen={(node!=null&&node==this.state.playNode&&this.state.fullScreen)}
-                   closeFullScreen={this.closeFullScreen}>
+                >
                 </Video>
             ))}
-        </TV>
+            </div>
+            </div>
+            </div>
         <VideoGalleryContainer>
         {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
             <Thumb key={node.id} 
