@@ -1,7 +1,7 @@
 import React from "react"
 import styled from 'styled-components'
 
-import tv from '../../images/tv.svg'
+import tv from '../../images/TV.svg'
 import MovingStatic from "../movingStatic"
 
 import galleryStyle from "./videoGallery.module.scss"
@@ -14,14 +14,19 @@ class TV extends React.Component {
         background: url(${MovingStatic});
         display: ${(this.props.previewNode==null&&this.props.playNode==null) ? 'block' : 'none'};
     `
-
+    const TVImg = styled.div `
+        background: url(${tv});
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    `
     return (
     <div className={galleryStyle.TVContainer}>
         <div className={galleryStyle.TV}>
-            <div id="TV" className={galleryStyle.previewVideoContainer}>
+            <TVImg id="TV" className={galleryStyle.previewVideoContainer}>
                 <Static className={galleryStyle.static}></Static>
                 {this.props.children}
-            </div>   
+            </TVImg>   
             <div className={galleryStyle.description} dangerouslySetInnerHTML={{ __html: this.props.previewNode == null ? "<p>hey this is a descript sdfkladsjfklsda wooooo this is longer </p><p>ok here it is her it sssssss wajekrl woooo </p> <p> tup lst paragrampsdf  </p>" : this.props.previewNode.html}}></div>
         </div>
     </div>
