@@ -43,6 +43,34 @@ exports.createPages = ({ graphql, actions }) => {
     })
   }
 
+  exports.onCreateWebpackConfig = ({
+    stage,
+    rules,
+    loaders,
+    plugins,
+    actions,
+  }) => {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: require.resolve('snapsvg/dist/snap.svg.js'),
+            use: 'imports-loader?this=>window,fix=>module.exports=0',
+          },
+        ],
+      },
+      resolve: {
+        alias: {
+          snapsvg: 'snapsvg/dist/snap.svg.js',
+        },
+      },
+      plugins: [
+        plugins.define({
+          __DEVELOPMENT__: stage === `develop` || stage === `develop-html`,
+        }),
+      ],
+    })
+  }
 
   /**
  * Implement Gatsby's Node APIs in this file.

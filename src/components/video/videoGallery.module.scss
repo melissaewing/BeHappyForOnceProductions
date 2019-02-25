@@ -29,68 +29,44 @@
     left: 0;
     margin: 5%;
   }
+  .videoContainer { 
+    background: rgba(0,0,0,0);
+  }
   .description {
     height: 150px;
   }
 }
-
-.fullScreen {
-  
+.fullScreenOverlay {
+  width: 100vw;
+  height: 100vh;
   position: fixed;
-  -webkit-transition: all 1s ease-in-out;
-     -moz-transition: all 1s ease-in-out;
-      -ms-transition: all 1s ease-in-out;
-       -o-transition: all 1s ease-in-out;
-          transition: all 1s ease-in-out;
+  top: 0;
+  left: 0;
 
-        left:0;
-        top:0;
-        height: 100vh;
-        width: 100vw;
-        z-index: 100;
+  background: rgba(0,0,0,1);
+  -webkit-transition: background 1s ease-in;
+     -moz-transition: background 1s ease-in;
+      -ms-transition: background 1s ease-in;
+       -o-transition: background 1s ease-in;
+
+  z-index: 100;
 }
-
+.fullScreen {
+  -webkit-transition: all 1s ease-in;
+     -moz-transition: all 1s ease-in;
+      -ms-transition: all 1s ease-in;
+       -o-transition: all 1s ease-in;
+          transition: all 1s ease-in;
+        position: absolute;
+        height: 94%;
+        width: 94%;
+        top: 0;
+        left: 0;
+        margin: 3%;
+}
 .hidden {
   display:none;
 }
-
-.closeButton {
-    width: 50px;
-    height: 50px;
-    z-index: 200;
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-.closeButton i {
-  position: absolute;
-  display: block;
-  height: 2px;
-  background: white;
-  width: 30px;
-  left: 10px;
-  -webkit-transition: all .3s;
-          transition: all .3s;
-  } 
-.closeButton:hover i { height:4px; }
-.closeButton i:nth-child(1) { top: 16px; }
-.closeButton i:nth-child(2) { top: 24px; }
-.closeButton i:nth-child(3) { top: 32px; }
-
-.closeButton i:nth-child(1) {
-top: 25px;
--webkit-transform: rotateZ(45deg);
-        transform: rotateZ(45deg);
-}
-.closeButton i:nth-child(2) {
-background: transparent;
-}
-.closeButton i:nth-child(3) {
-top: 25px;
--webkit-transform: rotateZ(-45deg);
-        transform: rotateZ(-45deg);
-}
-
 @media (min-width: 320px) and (max-width: 700px) {
   .galleryContainer {
     height:100vh;

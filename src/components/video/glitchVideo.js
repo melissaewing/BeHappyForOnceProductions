@@ -19,7 +19,8 @@ class GlitchVideo extends React.Component {
             iv_load_policy: 3,  // Hide the Video Annotations
             autohide: 0,
             modestbranding: 1
-        }
+        },
+        loadEnd: this.props.loadEnd
     };
     return (
         <YouTube 
@@ -34,6 +35,7 @@ class GlitchVideo extends React.Component {
   }
   _onReady(event) {
       event.target.mute();
+      this.opts.loadEnd();
   }
 }
 

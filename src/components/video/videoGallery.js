@@ -6,6 +6,7 @@ import {
     isMobile
   } from "react-device-detect";
 
+import Loading from "../loading/loading"
 import Thumb from "./thumb"
 import TV from "./TV"
 import VideoGalleryContainer from "./videoGalleryContainer"
@@ -20,38 +21,63 @@ class VideoGallery extends React.Component {
         {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
             style[node.frontmatter.embed] = { backgroundImage: `url(https://img.youtube.com/vi/${node.frontmatter.embed}/mqdefault.jpg)`}
         ))}
+        this.loadVids = {};
+        {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
+            this.loadVids[node.frontmatter.embed] = false
+        ))}
+        console.log(this.loadVids);
         this.state = {style: style};
         this.state = {
             previewNode: null,
             playNode: null,
             fullScreen: false,
-            style: style
+            style: style,
+            loading: true
         };
+        this.loadEnd = this.loadEnd.bind(this);
         this.openFullScreen = this.openFullScreen.bind(this);
         this.closeFullScreen = this.closeFullScreen.bind(this);
-    }
+        this.handleFullScreenChange = this.handleFullScreenChange.bind(this);
 
+    }
+    componentDidMount() {
+        ['fullscreenchange','msfullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange'].forEach( evt => 
+          document.addEventListener(evt, this.handleFullScreenChange, false)
+        );
+    }
+    componentWillUnmount() {
+        ['fullscreenchange','msfullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange'].forEach( evt => 
+          document.removeEventListener(evt, this.handleFullScreenChange, false)
+        );
+    }
+    loadEnd(vidEmbed) {
+        this.loadVids[vidEmbed] = true;
+        let loaded = true;
+        for (let [key, value] of Object.entries(this.loadVids)) {
+            if (!value) {
+                loaded = false;
+                break;
+            }
+        }
+        if (loaded) {
+           this.setState({loading: false});
+        }
+    }
     handleMouseEnter(node) {
-        console.log("handle mouse enter");
         this.setState({
             previewNode: node,
             playNode: null
         });
     }
     handleMouseLeave(node) {
-        console.log("handle mouse leave");
         this.setState({
             previewNode: null
         });
     }
     handleClick(node, thumbContainer) {
-        console.log("handle click");
         var tv = document.getElementById("TV");
         var galleryContainer = document.getElementById("galleryContainer");
         
-        console.log(thumbContainer);
-        console.log(tv);
-        console.log(galleryContainer);
         var translateX = tv.offsetLeft+tv.offsetWidth*(9/20) - (thumbContainer.offsetLeft+thumbContainer.offsetWidth/2);
         var translateY = tv.offsetTop+tv.offsetHeight*.9 - (thumbContainer.offsetTop+thumbContainer.offsetHeight/2) + galleryContainer.scrollTop;
         var scale = tv.offsetWidth*.3/thumbContainer.offsetWidth;
@@ -71,7 +97,6 @@ class VideoGallery extends React.Component {
         this.setState({fullScreen: true});
     }
     closeFullScreen() {
-        console.log("close full screen!");
         let styles = Object.assign({}, this.state.style);
         let nodeStyle = Object.assign({}, this.state.style[this.state.playNode.frontmatter.embed]);
         delete nodeStyle.transform;
@@ -83,9 +108,17 @@ class VideoGallery extends React.Component {
             fullScreen: false
         });
     }
+    handleFullScreenChange() {
+        if (!(document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement !== null)) {
+          if (isMobile) {
+              this.closeFullScreen();
+          }
+        }
+      }
     render() {
     return (
     <div>
+        <Loading loading={this.state.loading}></Loading>
         <div className={galleryStyle.TVContainer}>
             <div className={galleryStyle.TV}>
                 <div className={galleryStyle.previewVideoContainer}>
@@ -96,7 +129,9 @@ class VideoGallery extends React.Component {
                             preview={(node!=null&&node==this.state.previewNode)}
                             play={(node!=null&&node==this.state.playNode)}
                             fullScreen={(node!=null&&node==this.state.playNode&&this.state.fullScreen)}
-                        >
+                            closeFullScreen={this.closeFullScreen}
+                            loadEnd={this.loadEnd}
+                       >
                         </Video>
                     ))}
                 </div>
@@ -108,7 +143,6 @@ class VideoGallery extends React.Component {
                    mouseEnter={() => this.handleMouseEnter(node)} 
                    mouseLeave={() => this.handleMouseLeave(node)} 
                    click={(thumbContainer) => this.handleClick(node, thumbContainer)} 
-                   
                    style={this.state.style[node.frontmatter.embed]}
                    openFullScreen={this.openFullScreen}
                    preview={(node!=null&&node==this.state.previewNode)}
