@@ -1,10 +1,16 @@
 import React from "react"
 import loadingStyles from "./loading.module.css"
 import * as paths from "./paths"
-import Snap from 'snapsvg'
+
 
 import { shatter } from "../../styles/animations"
 import { throws } from "assert";
+
+
+let Snap
+if (typeof window !== 'undefined') {
+  Snap = require('snapsvg')
+}
 
 const mina = window.mina;
 const sadface = paths.SAD_FACE;
