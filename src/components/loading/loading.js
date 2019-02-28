@@ -7,12 +7,13 @@ import { shatter } from "../../styles/animations"
 import { throws } from "assert";
 
 
-let Snap
+let Snap;
+let mina;
 if (typeof window !== 'undefined') {
-  Snap = require('snapsvg')
+  Snap = require('snapsvg');
+  mina = window.mina;
 }
 
-const mina = window.mina;
 const sadface = paths.SAD_FACE;
 const happyface = paths.HAPPY_FACE;
 
