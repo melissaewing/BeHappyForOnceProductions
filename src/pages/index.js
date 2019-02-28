@@ -15,7 +15,6 @@ export default class Index extends React.Component {
       this.loadEnd = this.loadEnd.bind(this);
   }
   loadEnd() {
-    console.log("well we made it here");
     this.setState({loading: false});
   }
   render() {
@@ -24,7 +23,7 @@ export default class Index extends React.Component {
         <Loading loading={this.state.loading}></Loading>
         <Header></Header>
         <Title></Title>
-        <Arrow/>
+        {/*<Arrow/>*/}
         <div className={gvcStyle.videoContainer}>
             <div className={gvcStyle.videoBackground}>
                 <div className={gvcStyle.videoForeground}>

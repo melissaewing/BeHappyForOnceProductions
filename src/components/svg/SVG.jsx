@@ -1,43 +1,104 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { width as twWidth } from '../../tailwind'
-import { hidden } from '../styles/utils'
+//import { hidden } from '../styles/utils'
 
 const Wrapper = styled.svg`
   position: ${props => props.position};
   stroke: currentColor;
-  ${props => props.hiddenMobile && hidden};
+  ${props => props.hiddenMobile/* && hidden*/};
   color: ${props => props.stroke};
-  width: ${props => props.svgWidth};
+  width: ${props => props.width};
   fill: ${props => props.fill};
   left: ${props => props.left};
   top: ${props => props.top};
 `
 
 const icons = {
+  text: {
+    shape: (
+      <text 
+        stroke='white'
+        className="spinText" 
+        x="0" y="55" 
+        stroke="white" 
+        strokeWidth=".1" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeMiterlimit="10" 
+        fontSize="58px" 
+        fontFamily="'Above', Verdana, Tahoma">
+          <tspan>Get in</tspan>
+          <tspan x="0" y="113">Touch</tspan>
+        </text>
+    ),
+    viewBox: '0 0 200 120',
+  },
+  aboutText: {
+    shape: (
+      <text 
+        stroke='white'
+        x="0" y="45" 
+        stroke="white" 
+        strokeWidth=".1" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeMiterlimit="10" 
+        fontFamily="'Above', Verdana, Tahoma">
+          <tspan fontSize="35px" >Be Happy For Once</tspan>
+          <tspan fontSize="55px" x="0" y="100">Productions</tspan>
+        </text>
+    ),
+    viewBox: '0 0 390 110',
+  },
   triangle: {
     shape: (
       <polygon
-        strokeWidth="1px"
-        strokeLinejoin="round"
-        strokeMiterlimit="10"
-        points="14.921,2.27 28.667,25.5 1.175,25.5 "
+        fill="none" 
+        strokeWidth="7" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeMiterlimit="10" 
+        points="70,70,140,105,70,140 "
       />
     ),
-    viewBox: '0 0 30 30',
-  },
-  circleFill: {
-    shape: (
-      <circle cx="15" cy="15" r="15"/>
-      ),
-    viewBox: '0 0 30 30',
+    viewBox: '0 0 200 200',
   },
   circle: {
     shape: (
-      <path d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30ZM15,6.23A8.77,8.77,0,1,0,23.77,15,8.77,8.77,0,0,0,15,6.23Z" />
+    <>
+      <rect 
+        className="spin"
+        fill="none"
+        stroke="white"
+        strokeWidth="7"
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeMiterlimit="10" 
+        x="1" y="5" rx="40" ry="40" width="198" height="100"/>
+/>
+      <rect 
+        className="border"
+        fill="none"
+        stroke="white"
+        strokeWidth="1"
+        x="1" y="5" rx="40" ry="40" width="198" height="100"/>
+      <text className="spinText" x="29" y="68" stroke="white" fontSize="40px" fontFamily="'Above', Verdana, Tahoma">Submit</text>
+      </>
+      ),
+    viewBox: '0 0 200 110',
+  },
+  arrowRight: {
+    shape: (
+        <path d="M16.14 9.93L22.21 16l-6.07 6.07M8.23 16h13.98"/>
     ),
-    viewBox: '0 0 30 30',
+    viewBox: '0 0 32 32',
+  },
+  smCircle: {
+    shape: (
+        <circle cx="16" cy="16" r="15"/>
+    ),
+    viewBox: '0 0 32 32'
   },
   arrowUp: {
     shape: (
@@ -81,7 +142,7 @@ const SVG = ({ position, stroke, fill, width, icon, left, top, hiddenMobile }) =
     position={position}
     stroke={stroke}
     fill={fill}
-    svgWidth={twWidth[`${width}`]}
+    svgWidth="200" //icons[icon].svgWidth}
     left={left}
     top={top}
     hiddenMobile={hiddenMobile}
@@ -97,7 +158,7 @@ SVG.propTypes = {
   stroke: PropTypes.string,
   fill: PropTypes.string,
   width: PropTypes.number,
-  icon: PropTypes.oneOf(['triangle', 'circle', 'arrowUp', 'upDown', 'box', 'hexa']).isRequired,
+  icon: PropTypes.oneOf(['text', 'aboutText', 'triangle', 'circle', 'arrowRight', 'smCircle', 'arrowUp', 'upDown', 'box', 'hexa']).isRequired,
   left: PropTypes.string,
   top: PropTypes.string,
   hiddenMobile: PropTypes.bool,
@@ -106,7 +167,7 @@ SVG.propTypes = {
 SVG.defaultProps = {
   position: 'absolute',
   stroke: 'transparent',
-  width: 8,
+  width: 7,
   fill: 'none',
   left: '0%',
   top: '0%',

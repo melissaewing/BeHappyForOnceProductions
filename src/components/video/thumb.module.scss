@@ -2,10 +2,10 @@
     display: block;
     float: right;
     clear: both;
-    width: 30vw;
-    height: 30vw;
-    margin: 2vw 5vw 2vw 55vw;
-    padding: 0px;
+    width: 30%;
+    padding-top: 30%;
+    height: auto;
+    margin: 2% 5% 2% 55%;
     position: relative;
     border: 1px solid #000000b8;;
     border-radius: 50%;
@@ -20,6 +20,8 @@
     height: 50%;
     border-radius: 50%;
     position: absolute;
+    display: flex;
+    align-items: center;
     top:50%;
     left:50%;
     z-index: -1;
@@ -27,7 +29,6 @@
     background-color:#000000b8;
     transition: background-color 1.5s ease;
     border: 1px solid white;
-    display: table;
     -webkit-box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.45);
     -moz-box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.45);
     box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.45);
@@ -39,10 +40,10 @@
   }
 
   .infoBlock .thumbTitle {
-    display: table-cell;
+    flex: 1 1 0;
     text-align: center;
     vertical-align: middle;
-    font-size: 1.2em;
+    font-size: .9em;
     padding: 10px;
     font-family: "Above", Verdana, Tahoma;
     color: white;
@@ -60,6 +61,9 @@
   .playBut {
     /*  border: 1px solid red;*/
       display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
       transform: translateX(50%);
       -webkit-transition: all 0.5s ease;
       
@@ -170,10 +174,11 @@
   .thumbContainer {
     clear: none;
     display: inline-block;
+
     width: 30vh;
     height: 30vh;
-    margin: 2vh 1vw;
-    flex: 1 1 0;
+    padding: 0;
+    margin: 2vh 1vh;
   }
   .infoBlock .thumbTitle {
     font-size: .8em;

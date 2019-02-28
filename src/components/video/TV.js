@@ -14,24 +14,22 @@ class TV extends React.Component {
         background: url(${MovingStatic});
         display: ${(this.props.previewNode==null&&this.props.playNode==null) ? 'block' : 'none'};
     `
-    const TVImg = styled.div `
-        background: url(${tv});
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        height: 50vw;
-        width: 50vw;
+    const TVContainer = styled.div `
+        height: auto;
+        width: 100%;
         margin: 0px auto;
         display: block;
         position: relative;
     `
+    const TVImg = styled.img `
+        width: 100%;
+        height: auto;
+    `
     return (
-        <div>
-            <TVImg id="TV">
+            <TVContainer id="TV">
+                <TVImg src={tv}></TVImg>
                 <Static className={galleryStyle.static}></Static>
-            </TVImg>   
-            <div className={galleryStyle.description} dangerouslySetInnerHTML={{ __html: this.props.previewNode == null ? "<p>hey this is a descript sdfkladsjfklsda wooooo this is longer </p><p>ok here it is her it sssssss wajekrl woooo </p> <p> tup lst paragrampsdf  </p>" : this.props.previewNode.html}}></div>
-        </div>
+            </TVContainer>   
     );
   }
 }

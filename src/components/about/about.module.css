@@ -1,0 +1,32 @@
+.aboutContainer {
+    margin: 0px auto;
+    width: 75vw;
+    height: 100vh;
+    max-width: 600px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.aboutText {
+    flex: 1 1 0;
+    max-width: 200px;
+    line-height: 1.5;
+    letter-spacing: .18em;
+    font-size: .7em;
+}
+
+.title {
+    flex: 1 1 0;
+    min-width: 200px;
+    padding-right: 10%;
+}
+
+@media (max-width: 560px) {
+    .title {
+       padding: 0 10px;
+    }
+}

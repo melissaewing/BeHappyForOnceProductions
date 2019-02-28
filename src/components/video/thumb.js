@@ -52,7 +52,7 @@ class Thumb extends React.Component {
             onMouseLeave={this.mouseLeave}>
         <PlayButton/>
         <div className={thumbStyle.infoBlock}>
-          <span className={thumbStyle.thumbTitle}>{this.props.title}</span>
+          <div className={thumbStyle.thumbTitle}>{this.props.title}</div>
         </div>
       </div>
     );

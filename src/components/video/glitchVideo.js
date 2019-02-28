@@ -11,6 +11,7 @@ class GlitchVideo extends React.Component {
         height: '270',
         playerVars: { 
             showinfo: 0, 
+            controls: 0,
             autoplay: 1,
             loop: 1,
             start: 10,

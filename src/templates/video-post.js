@@ -4,7 +4,7 @@ import Header from "../components/header/header"
 import Video from "../components/video/video"
 //import videoStyle from "../components/video/video.module.css"
 
-import Share from "../components/share/Share"
+import Share from "../components/social/Share"
 
 export default ({ data }) => {
   const {

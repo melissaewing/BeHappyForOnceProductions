@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "../components/header/header"
 import ContactForm from "../components/contact/contactForm";
-
-import { FacebookProvider, Page } from 'react-facebook';
+import Social from "../components/social/social"
 
 
   export default ({ data }) => {
@@ -10,9 +9,7 @@ import { FacebookProvider, Page } from 'react-facebook';
     <div>
       <Header></Header>
       <ContactForm></ContactForm>
-      <FacebookProvider appId="123456789">
-        <Page href="https://www.facebook.com" tabs="timeline" />
-      </FacebookProvider>    
+      <Social></Social>
     </div>
     );
   }

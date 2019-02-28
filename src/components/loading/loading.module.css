@@ -2,46 +2,32 @@
     width: 100vw;
     height: 100vh;
     background: black;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 999;
-    display: table;
+    -webkit-transition: all 0.5s ease-in-out;
+
 }
-#loadContainer.hide {
-    display: none;
-}
-#load {
-    display: table-cell;
-    vertical-align: middle;
+.hide {
+  display: none;
 }
 .svg {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-#svgBackground {
-    fill: white;
-    animation: glow-anim 1s linear 0s infinite alternate-reverse both running;
-} 
-@keyframes glow-anim {
-    0% {	
-        fill: rgba(255,255,255,0);
-        opacity: 0;
-    }
-    100% { 
-        fill: rgba(255,255,255,1);
-        opacity: 1;
-    } 
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
 }
 #loadtext {
-    margin: 0 auto;
+    width: 100%;
+    top: 60vh;
     text-align: center;
-    position: relative;
+    position: absolute;
     color: white;
     font-family: "Above", Verdana, Tahoma;
 }
  .text {
-    position: absolute;
-    font-size: 8.5vw;
+    font-size: 35px;
     margin: 0;
     width: 100%;
     animation: flicker-out-anim 10s linear 0s infinite alternate-reverse both running;
