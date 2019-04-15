@@ -116,6 +116,9 @@ class VideoGallery extends React.Component {
         }
       }
     render() {
+
+        console.log(this.state.previewNode);
+    // console.log(this.props.previewNode.html);
     return (
     <div className={galleryStyle.container}>
         <Loading loading={this.state.loading}></Loading>
@@ -135,8 +138,7 @@ class VideoGallery extends React.Component {
                         </Video>
                     ))}
                 </div>
-                <div className={galleryStyle.description} dangerouslySetInnerHTML={{ __html: this.props.previewNode == null ? "<p>hey this is a descript sdfkladsjfklsda wooooo this is longer </p><p>ok here it is her it sssssss wajekrl woooo </p> <p> tup lst paragrampsdf  </p>" : this.props.previewNode.html}}></div>
-
+                <div className={galleryStyle.description} dangerouslySetInnerHTML={{ __html: this.state.previewNode == null ? "" : this.state.previewNode.html}}></div>
             </div>
         </div>
         <VideoGalleryContainer>
