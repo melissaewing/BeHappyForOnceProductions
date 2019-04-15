@@ -78,7 +78,7 @@ class VideoGallery extends React.Component {
         var tv = document.getElementById("TV");
         var galleryContainer = document.getElementById("galleryContainer");
         
-        var translateX = tv.offsetLeft+tv.offsetWidth*(9/20) - (thumbContainer.offsetLeft+thumbContainer.offsetWidth/2);
+        var translateX = tv.offsetLeft+tv.offsetWidth*.3 - (thumbContainer.offsetLeft+thumbContainer.offsetWidth/2);
         var translateY = tv.offsetTop+tv.offsetHeight*.9 - (thumbContainer.offsetTop+thumbContainer.offsetHeight/2) + galleryContainer.scrollTop;
         var scale = tv.offsetWidth*.3/thumbContainer.offsetWidth;
 
