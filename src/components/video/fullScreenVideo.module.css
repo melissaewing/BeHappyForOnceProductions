@@ -1,0 +1,29 @@
+.fullScreenOverlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: rgba(0,0,0,1);
+    -webkit-transition: background 1s ease-in;
+       -moz-transition: background 1s ease-in;
+        -ms-transition: background 1s ease-in;
+         -o-transition: background 1s ease-in;
+  
+    z-index: 100;
+  }
+  .fullScreen {
+          position: absolute;
+          height: 94%;
+          width: 94%;
+          top: 0;
+          left: 0;
+          margin: 3%;
+  }
+  .hidden {
+    display:none;
+  }

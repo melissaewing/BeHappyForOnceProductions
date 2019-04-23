@@ -21,7 +21,7 @@ export default class Index extends React.Component {
     return (
     <div>
         <Loading loading={this.state.loading}></Loading>
-        <Header></Header>
+        <Header loading={this.state.loading}></Header>
         <Title></Title>
         {/*<Arrow/>*/}
         <div className={gvcStyle.videoContainer}>

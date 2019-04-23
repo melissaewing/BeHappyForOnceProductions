@@ -12,6 +12,8 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "emotion": "^10.0.7",
     "gatsby": "^2.0.104",
@@ -20,11 +22,13 @@
     "gatsby-source-filesystem": "^2.0.18",
     "gatsby-source-youtube": "^1.0.1",
     "gatsby-transformer-remark": "^2.2.2",
+    "i": "^0.3.6",
     "imports-loader": "^0.8.0",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "mina": "^1.0.9",
     "node-sass": "^4.11.0",
+    "npm": "^6.9.0",
     "react": "^16.5.1",
     "react-custom-share": "^0.4.8",
     "react-device-detect": "^1.6.2",

@@ -102,17 +102,12 @@ export default class Loading extends React.Component {
         this.circle.animate({transform: "scale("+scale+")"}, 1000, mina.elastic, () => this.loadDone());
     }
     loadDone() {
-        console.log("load done loading");
         this.setState({loaded: true});
     }
     componentDidMount() {
-        console.log("load mount. loading state and props ", this.state.loaded, this.props.loading);
-
         this.svgRender();
     }
     componentDidUpdate() {
-        console.log("load update. loading state and props ", this.state.loaded, this.props.loading);
-
         if (!this.props.loading && !this.state.loaded) {
            
         }

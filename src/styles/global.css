@@ -20,7 +20,13 @@ body, html {
 }
 
 
-h1 {
+h1, h2, h3 {
   font-family: "Above", Verdana, Tahoma;
   color: white;
+}
+
+h1 span, h2 span, h3 span {
+  font-weight: 100;
+  font-size: .95em;
+  font-family: 'Open Sans', Verdana, Tahoma;
 }

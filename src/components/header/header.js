@@ -8,24 +8,58 @@ class Header extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-          open: true,
-          menuClass: "open-menu"
+          open: false,
+          menuClass: ""
       };
       this.toggleNav = this.toggleNav.bind(this);
+      this.mouseEnter = this.mouseEnter.bind(this);
+      this.openNav = this.openNav.bind(this);
+      this.closeNav = this.closeNav.bind(this);
+
+      this.openTimeout = null;
+
     }
+
+    componentDidUpdate(prevProps) {
+      if (this.props.loading !== prevProps.loading) {
+        setTimeout(() => {
+          this.openNav();
+          setTimeout(this.closeNav,3000);
+        }, 1000);
+      }
+    }
+
     toggleNav() {
-        if (this.state.open) {
-            this.setState({
-                open: false,
-                menuClass: ""
-            });
-        } else {
-            this.setState({
-                open: true,
-                menuClass: "open-menu"
-            });
-        }
+      if (this.state.open) {
+        this.closeNav();
+      } else {
+         this.openNav();
+      }
     }
+
+    openNav() {
+      this.setState({
+        open: true,
+        menuClass: "open-menu"
+      });
+    }
+
+    mouseEnter() {
+      this.openTimeout = setTimeout(() => {
+         this.openNav();
+      }, 200);
+    }
+
+    closeNav() {
+      if (this.openTimeout) {
+        clearTimeout(this.openTimeout);
+      }
+      this.setState({
+        open: false,
+        menuClass: ""
+      });
+    }
+
     render() {
         return (
         <header>
@@ -37,7 +71,8 @@ class Header extends React.Component {
                 </a>
             </div>
 
-            <nav>
+            <div className="navHover" onMouseEnter={this.mouseEnter}></div>
+            <nav onMouseLeave={this.closeNav}>
                 <ul id="menu">
                     <MenuItem to="/" name="home"/>
                     <MenuItem to="/about" name="about"/>

@@ -1,6 +1,13 @@
 import React from "react"
 import thumbStyle from "./thumb.module.scss"
 import PlayButton from "../svg/playButton"
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
+
 
 class Thumb extends React.Component {
   constructor(props) {
@@ -14,10 +21,10 @@ class Thumb extends React.Component {
     this.play = this.play.bind(this);
   } 
   componentDidMount() {
-    this.myRef.addEventListener('transitionend', this.play);
+  //  this.myRef.addEventListener('transitionend', this.play);
   }
   componentWillUnmount () {
-    this.myRef.removeEventListener('transitionend', this.play);
+  //  this.myRef.removeEventListener('transitionend', this.play);
   }
   shouldComponentUpdate(nextProps, nextState){
     return (nextProps.preview!=this.props.preview
@@ -25,12 +32,18 @@ class Thumb extends React.Component {
       ||nextProps.style!=this.props.style);
   }
   mouseEnter() {
+    if (!isMobile) {
       this.props.mouseEnter();
+    }
   }
   mouseLeave() {
+    if (!isMobile) {
       this.props.mouseLeave();
+    }
   }
+
   click() {
+    console.log("click");
       this.props.click(this.myRef);
   }
 
@@ -40,16 +53,31 @@ class Thumb extends React.Component {
     }
   }
 
+  getThumbContainerClass() {
+    var className = thumbStyle.thumbContainer;
+    if (isMobile) {
+      className += " " + thumbStyle.mobile;
+    }
+    if (this.props.play) {
+      className += " " + thumbStyle.play;
+    } else if (this.props.preview) {
+      className += " " + thumbStyle.preview;
+    }
+    return className;
+  }
+
   render() {
     return (
-      <div ref={ (ref) => this.myRef=ref } 
-            className={thumbStyle.thumbContainer+" "+(this.props.play ? thumbStyle.play : (this.props.preview ? thumbStyle.preview : ""))}
+    <div ref={ (ref) => this.myRef=ref } 
+            className={this.getThumbContainerClass()}
             style={this.props.style}
             onClick={this.click}
             onTouchStart={this.mouseEnter}
             onTouchEnd={this.mouseLeave}
-            onMouseEnter={this.mouseEnter}
-            onMouseLeave={this.mouseLeave}>
+            onMouseEnter={(!isMobile ? this.mouseEnter : null)}
+            onMouseLeave={(!isMobile ? this.mouseLeave : null)}>
+       
+     
         <PlayButton/>
         <div className={thumbStyle.infoBlock}>
           <div className={thumbStyle.thumbTitle}>{this.props.title}</div>

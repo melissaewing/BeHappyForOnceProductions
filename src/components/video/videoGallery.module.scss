@@ -4,105 +4,219 @@
   max-width: 900px;
   position: relative;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
 }
 .galleryContainer {
-  position: absolute;
   height: 100%;
-  width: 100%;
-  overflow: scroll;
-  top: 50px;
+  width: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
 }
 .TVContainer {
   height: 100%;
-  width: 50%;
-  margin: 0 5%;
-  display: table;
-  .TV  {
-    display: table-cell;
-    vertical-align: middle;
-  }
+  max-width: 50%;
+  margin: 0 10%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   .previewVideoContainer {
-    height: 100%;
-    width: 100%;
-    margin: 0px auto;
-    display: block;
     position: relative;
-    display: table-cell;
   }
-  .static, .previewVideo {
+  .static, .previewVideo, .previewHoverOverlay {
     position: absolute;
     width: 90%;
     height: 54%;
-    top: 20%;
+    top: 19%;
     left: 0;
     margin: 5%;
   }
-  .description {
-    font-size: .7em;
-    letter-spacing: .18em;
-    height: 150px;
+  .fsouter, .fsinner {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    pointer-events: none;
+    cursor: pointer;
+  } 
+  .fsouter {
+    width: 30%;
+    height: 30%;
+    top:35%;
+    left: 35%;
+    transform: scale(1);
   }
+  .previewHoverOverlay:hover .fsouter {
+    animation: full-screen-anim 2s ease-out 0s infinite normal both running;
+  }
+  @keyframes full-screen-anim {
+    0% { transform: scale(1)	}
+    8% { transform: scale(1.1)	}
+    15% { transform: scale(1)	}
+    23% { transform: scale(1.1)	}
+    30% { transform: scale(1)	}
+    100% {transform: scale(1) } 
+}
+
+  .fsinner {
+
+    width: 20%;
+    height: 20%;
+    top:40%;
+    left: 40%;
+  }
+
+  .previewHoverOverlay {
+    z-index: 200;
+    -webkit-transition: all .4s ease-in;
+       -moz-transition: all .4s ease-in;
+        -ms-transition: all .4s ease-in;
+         -o-transition: all .4s ease-in;
+            transition: all .4s ease-in;
+    opacity: 0;
+    background: rgba(0,0,0,.7);
+  }
+  .circle {
+    stroke: white;
+    stroke-dasharray: 650;
+    stroke-dashoffset: 650;
+    -webkit-transition: all 0.5s ease-in-out;
+    opacity: 0.3;
+    
+  }
+  .playBut {
+    pointer-events: none;
+    /*  border: 1px solid red;*/
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateX(50%);
+      -webkit-transition: all 0.5s ease;
+      
+      .triangle {
+        -webkit-transition: all 0.7s ease-in-out;
+        stroke-dasharray: 650;
+        stroke-dashoffset: 650;
+        stroke: none;
+        fill: white;
+        fill-opacity: 0;
+        transform: translateY(0) 
+       }
+  }
+
+  .previewHoverOverlay:hover {
+    cursor: pointer;
+    opacity: 1;
+    .triangle {
+      fill-opacity: 1;
+
+      stroke-dashoffset: 0;
+      opacity: 1;
+      stroke: white;
+      animation: nudge 1s ease-in;
+    
+      @keyframes nudge{
+        0% {
+          stroke-dashoffset: 650;
+          transform: translateX(0);
+          fill-opacity:0;
+        }
+        30% {
+          transform: translateX(-5px)
+        }
+        50% {
+          transform: translateX(5px);
+          fill-opacity:0;
+        }
+        80% {
+          transform: translateX(-2px);
+        }
+        100% {
+          transform: translateX(0);
+          stroke-dashoffset: 0;
+          fill-opacity:1;
+        }
+      }
+    }
+  .circle {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+}
   .videoContainer { 
     background: rgba(0,0,0,0);
   }
-}
-.fullScreenOverlay {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  background: rgba(0,0,0,1);
-  -webkit-transition: background 1s ease-in;
-     -moz-transition: background 1s ease-in;
-      -ms-transition: background 1s ease-in;
-       -o-transition: background 1s ease-in;
-
-  z-index: 100;
-}
-.fullScreen {
-  -webkit-transition: all 1s ease-in;
-     -moz-transition: all 1s ease-in;
-      -ms-transition: all 1s ease-in;
-       -o-transition: all 1s ease-in;
-          transition: all 1s ease-in;
-        position: absolute;
-        height: 94%;
-        width: 94%;
-        top: 0;
-        left: 0;
-        margin: 3%;
-}
 .hidden {
-  display:none;
+  display: none;
 }
-@media (min-width: 320px) and (max-width: 700px) {
-  .galleryContainer {
-    height:100vh;
-    width: 100vw;
-    top: 0vh;
+
+@media only screen and (max-width: 700px) and (orientation: portrait) {
+  .container {
+    flex-direction: column;
   }
-  .scrollContainer {
-    width: max-content;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
+  .galleryContainer {
+    height: unset;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex: 0 0 auto;
+    padding: 0;
+    flex-direction: row; 
+    -webkit-box-shadow: inset 0px 0px 18px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 18px -2px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 18px -2px rgba(0,0,0,0.75);
   }
   .TVContainer {
-    height: 50vh;
-    width: 90vw;
-    margin: 0 auto;
+    max-width: unset;
+    margin:0;
+    flex: 0 0 auto;
+    align-items: unset;
+    height: unset;
+    padding-bottom: 1.5vh;
+  }
     .previewVideoContainer {
-      height: 90vw;
-      width: 90vw;
-      margin-top: 2vh;
-      display: block;
+      margin: 0vh 25vw;
     }
-    .description {
-      width: 90vw;
-      height: 15vh;
-      margin: 0 auto;
+  
+}
+@media only screen and (max-width: 1366px) and (orientation: landscape) {
+.container {
+}
+}
+@media (max-width: 320px) and (orientation: portrait) {
+  .previewVideoContainer {
+    margin: 0vh 20vw;
+  }
+
+}
+@media (max-height: 414px) and (orientation: landscape) {
+  .previewVideoContainer {
+   display: none;
+  }
+
+  .TVContainer {
+    max-width: 60%;
+    margin: 0 5%;
+  }
+}
+  @media only screen and (min-height: 811px) and (max-height: 1023) and (orientation: portrait) {
+    .previewVideoContainer {
+      margin: 0vh 5vw !important;
     }
+}
+
+@media only screen and (min-height: 1024px) and (orientation: portrait) {
+  .TVContainer {
+    margin: 3rem;
   }
 }

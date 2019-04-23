@@ -22,7 +22,7 @@ const icons = {
         className="spinText" 
         x="0" y="55" 
         stroke="white" 
-        strokeWidth=".1" 
+        strokeWidth="1" 
         strokeLinecap="round" 
         strokeLinejoin="round" 
         strokeMiterlimit="10" 
@@ -40,10 +40,11 @@ const icons = {
         stroke='white'
         x="0" y="45" 
         stroke="white" 
-        strokeWidth=".1" 
+        strokeWidth="1" 
         strokeLinecap="round" 
         strokeLinejoin="round" 
         strokeMiterlimit="10" 
+        opacity="1"
         fontFamily="'Above', Verdana, Tahoma">
           <tspan fontSize="35px" >Be Happy For Once</tspan>
           <tspan fontSize="55px" x="0" y="100">Productions</tspan>

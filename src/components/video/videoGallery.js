@@ -11,8 +11,26 @@ import Thumb from "./thumb"
 import TV from "./TV"
 import VideoGalleryContainer from "./videoGalleryContainer"
 import Video from "./video"
+import FullScreenVideo from "./fullScreenVideo"
+import Share from "../social/Share"
+
+import styled from 'styled-components'
+import fsouter from '../../images/fullscreenouter.png'
+import fsinner from '../../images/fullscreeninner.png'
+import PlayButton from "../svg/playButton"
 
 import galleryStyle from "./videoGallery.module.scss"
+
+import Description from "../description/description"
+
+const FullScreenOuter = styled.div `
+  background: url(${fsouter});
+`;
+
+const FullScreenInner = styled.div `
+  background: url(${fsinner});
+`;
+
 
 class VideoGallery extends React.Component {
     constructor(props) {
@@ -25,19 +43,22 @@ class VideoGallery extends React.Component {
         {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
             this.loadVids[node.frontmatter.embed] = false
         ))}
-        console.log(this.loadVids);
         this.state = {style: style};
         this.state = {
             previewNode: null,
             playNode: null,
             fullScreen: false,
             style: style,
-            loading: true
+            loading: true,
+            pause: false
         };
         this.loadEnd = this.loadEnd.bind(this);
         this.openFullScreen = this.openFullScreen.bind(this);
         this.closeFullScreen = this.closeFullScreen.bind(this);
         this.handleFullScreenChange = this.handleFullScreenChange.bind(this);
+        this.playFromPreview = this.playFromPreview.bind(this);
+        this.mouseOutOverlay = this.mouseOutOverlay.bind(this);
+        this.mouseEnterOverlay = this.mouseEnterOverlay.bind(this);
 
     }
     componentDidMount() {
@@ -64,6 +85,7 @@ class VideoGallery extends React.Component {
         }
     }
     handleMouseEnter(node) {
+        console.log("ahdnle mouse enter");
         this.setState({
             previewNode: node,
             playNode: null
@@ -74,8 +96,14 @@ class VideoGallery extends React.Component {
         //    previewNode: null
         });
     }
+
     handleClick(node, thumbContainer) {
-        var tv = document.getElementById("TV");
+
+        if (isMobile && (this.state.previewNode == null || this.state.previewNode != node)) {
+            this.handleMouseEnter(node);
+            
+        } else {
+       /* var tv = document.getElementById("TV");
         var galleryContainer = document.getElementById("galleryContainer");
         
         var translateX = tv.offsetLeft+tv.offsetWidth*.3 - (thumbContainer.offsetLeft+thumbContainer.offsetWidth/2);
@@ -86,23 +114,58 @@ class VideoGallery extends React.Component {
         let nodeStyle = Object.assign({}, this.state.style[node.frontmatter.embed]);
         nodeStyle.transform = `translate(${translateX}px, ${translateY}px) scale(${scale}) rotate3d(1, 0, 0, .25turn)`;
         styles[node.frontmatter.embed] = nodeStyle;
-
+*/
         this.setState({
-            style: styles,
+         //   style: styles,
             previewNode: null,
-            playNode: node
+            playNode: node,
+            pause: false,
+            fullScreen: true
+        });
+        }
+    }
+
+    playFromPreview() {
+        const previewNode = this.state.previewNode;
+
+        console.log("previewNode", previewNode);
+        this.setState({
+            previewNode: null,
+            playNode: previewNode,
+            pause: false,
+            fullScreen: true
+        });
+
+        console.log("play from preview", this.state);
+    }
+    mouseOutOverlay() {
+        console.log("mouseout");
+        this.setState({
+            pause: false
         });
     }
-    openFullScreen() {
-        this.setState({fullScreen: true});
-    }
-    closeFullScreen() {
-        let styles = Object.assign({}, this.state.style);
-        let nodeStyle = Object.assign({}, this.state.style[this.state.playNode.frontmatter.embed]);
-        delete nodeStyle.transform;
-        styles[this.state.playNode.frontmatter.embed] = nodeStyle;
+
+    mouseEnterOverlay() {
+        console.log("mouseontter");
         this.setState({
-            style: styles,
+            pause: true
+        });
+    }
+
+    openFullScreen() {
+        console.log("open full screen");
+        this.setState({fullScreen: true});
+
+    }
+
+    closeFullScreen() {
+        console.log("ckose full screen");
+     //   let styles = Object.assign({}, this.state.style);
+     //   let nodeStyle = Object.assign({}, this.state.style[this.state.playNode.frontmatter.embed]);
+    //    delete nodeStyle.transform;
+    //    styles[this.state.playNode.frontmatter.embed] = nodeStyle;
+        this.setState({
+      //      style: styles,
             previewNode: null,
             playNode: null,
             fullScreen: false
@@ -116,29 +179,46 @@ class VideoGallery extends React.Component {
         }
       }
     render() {
-
-        console.log(this.state.previewNode);
-    // console.log(this.props.previewNode.html);
+        console.log("playnode", this.state);
     return (
+    <div>
+    <Loading loading={this.state.loading}></Loading>
+
+    <FullScreenVideo playNode={this.state.playNode} closeFullScreen={this.closeFullScreen}></FullScreenVideo>
+
     <div className={galleryStyle.container}>
-        <Loading loading={this.state.loading}></Loading>
         <div className={galleryStyle.TVContainer}>
             <div className={galleryStyle.TV}>
                 <div className={galleryStyle.previewVideoContainer}>
                     <TV previewNode={this.state.previewNode} playNode={this.state.playNode}></TV>
                     {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
-                        <Video key={node.id}
-                            embed={node.frontmatter.embed}
-                            preview={(node!=null&&node==this.state.previewNode)}
-                            play={(node!=null&&node==this.state.playNode)}
-                            fullScreen={(node!=null&&node==this.state.playNode&&this.state.fullScreen)}
-                            closeFullScreen={this.closeFullScreen}
-                            loadEnd={this.loadEnd}
-                       >
-                        </Video>
+                        <div key={node.id+'previewContainer'}>
+                            <Video key={node.id}
+                                embed={node.frontmatter.embed}
+                                preview={(node!=null&&node==this.state.previewNode)}
+                                pause={this.state.pause}
+                                play={(node!=null&&node==this.state.playNode)}
+                                fullScreen={(node!=null&&node==this.state.playNode&&this.state.fullScreen)}
+                                loadEnd={this.loadEnd}
+                            >
+                            </Video>
+                            <div key={node.id+'preview'} className={this.state.previewNode ? galleryStyle.previewHoverOverlay : galleryStyle.hidden} 
+                                 onClick={()=>this.playFromPreview()} 
+                                 onMouseEnter={this.mouseEnterOverlay} 
+                                 onMouseOut={this.mouseOutOverlay}>
+                                <FullScreenOuter className={galleryStyle.fsouter}></FullScreenOuter>
+                                <FullScreenInner className={galleryStyle.fsinner}></FullScreenInner>
+                            </div>
+                            
+                        </div>
                     ))}
                 </div>
-                <div className={galleryStyle.description} dangerouslySetInnerHTML={{ __html: this.state.previewNode == null ? "" : this.state.previewNode.html}}></div>
+                
+                <div className={galleryStyle.description}> 
+                {(window.innerWidth > 700 || !isMobile) &&
+                   <Description previewNode={this.state.previewNode}></Description>
+                }
+                </div>
             </div>
         </div>
         <VideoGalleryContainer>
@@ -155,6 +235,12 @@ class VideoGallery extends React.Component {
             </Thumb>
         ))}
         </VideoGalleryContainer>
+        <div className={galleryStyle.description}> 
+            {(isMobile && window.innerWidth <= 700) &&
+               <Description previewNode={this.state.previewNode}></Description>
+            }
+        </div>
+    </div>
     </div>
     );
   }

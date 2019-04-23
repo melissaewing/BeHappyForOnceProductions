@@ -13,9 +13,7 @@ class VideoGalleryContainer extends React.Component {
 
     return (
         <div id={"galleryContainer"} className={galleryStyle.galleryContainer}>
-          <div className={galleryStyle.scrollContainer}>
             {this.props.children}
-          </div>
         </div>
     
     );
