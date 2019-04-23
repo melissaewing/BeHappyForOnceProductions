@@ -1,9 +1,6 @@
 import React from "react"
 import {
-    BrowserView,
-    MobileView,
-    isBrowser,
-    isMobile
+    isMobileOnly
   } from "react-device-detect";
 
 import Loading from "../loading/loading"
@@ -207,7 +204,7 @@ class VideoGallery extends React.Component {
                 </div>
                 
                 <div className={galleryStyle.description}> 
-                {(window.innerWidth > 700 || !isMobile) &&
+                {!isMobileOnly &&
                    <Description previewNode={this.state.previewNode}></Description>
                 }
                 </div>
@@ -228,7 +225,7 @@ class VideoGallery extends React.Component {
         ))}
         </VideoGalleryContainer>
         <div className={galleryStyle.description}> 
-            {(isMobile && window.innerWidth <= 700) &&
+            {isMobileOnly &&
                <Description previewNode={this.state.previewNode}></Description>
             }
         </div>

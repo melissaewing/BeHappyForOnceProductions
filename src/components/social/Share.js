@@ -7,7 +7,7 @@ import InstagramIcon from "./icons/instagram";
 import FacebookIcon from "./icons/facebook";
 import YoutubeIcon from "./icons/youtube";
 import EmailIcon from "./icons/email";
-import {isMobile} from 'react-device-detect';
+import {isMobileOnly} from 'react-device-detect';
 
 import './share.scss';
 
@@ -16,13 +16,13 @@ class Share extends React.Component {
     return(
     <div className="post-social">
         <span className="shareText">Share this video</span>
-      <InstagramIcon isMobile={window.innerWidth < 700 && isMobile}></InstagramIcon>
+      <InstagramIcon isMobile={isMobileOnly}></InstagramIcon>
     
 		<FacebookShareButton url={'https://www.youtube.com/watch?v='+this.props.embed}>
-      <FacebookIcon isMobile={window.innerWidth < 700 && isMobile}></FacebookIcon>
+      <FacebookIcon isMobile={isMobileOnly}></FacebookIcon>
 		</FacebookShareButton>
 		<EmailShareButton url={'https://www.youtube.com/watch?v='+this.props.embed}>
-      <EmailIcon isMobile={window.innerWidth < 700 &&  isMobile}></EmailIcon>
+      <EmailIcon isMobile={isMobileOnly}></EmailIcon>
 		</EmailShareButton>		
 	</div>
     );
