@@ -69,7 +69,7 @@ class Thumb extends React.Component {
     return (
     <div ref={ (ref) => this.myRef=ref } 
             className={this.getThumbContainerClass()}
-            style={this.props.style}
+         //   style={this.props.style}
             onClick={this.click}
             onTouchStart={this.mouseEnter}
             onTouchEnd={this.mouseLeave}

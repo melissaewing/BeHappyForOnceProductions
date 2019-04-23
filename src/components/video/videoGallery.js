@@ -33,20 +33,20 @@ const FullScreenInner = styled.div `
 class VideoGallery extends React.Component {
     constructor(props) {
         super(props);
-        const style = {};
-        {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
-            style[node.frontmatter.embed] = { backgroundImage: `url(https://img.youtube.com/vi/${node.frontmatter.embed}/mqdefault.jpg)`}
-        ))}
+    //  const style = {};
+     //   {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
+      //      style[node.frontmatter.embed] = { backgroundImage: `url(https://img.youtube.com/vi/${node.frontmatter.embed}/mqdefault.jpg)`}
+       // ))}
         this.loadVids = {};
         {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
             this.loadVids[node.frontmatter.embed] = false
         ))}
-        this.state = {style: style};
+      //  this.state = {style: style};
         this.state = {
             previewNode: null,
             playNode: null,
             fullScreen: false,
-            style: style,
+         //   style: style,
             loading: true,
             pause: false
         };
@@ -217,7 +217,7 @@ class VideoGallery extends React.Component {
                    mouseEnter={() => this.handleMouseEnter(node)} 
                    mouseLeave={() => this.handleMouseLeave(node)} 
                    click={(thumbContainer) => this.handleClick(node, thumbContainer)} 
-                   style={this.state.style[node.frontmatter.embed]}
+                //   style={this.state.style[node.frontmatter.embed]}
                    openFullScreen={this.openFullScreen}
                    preview={(node!=null&&node==this.state.previewNode)}
                    play={(node!=null&&node==this.state.playNode)}
