@@ -14,7 +14,7 @@ export default ({ data }) => {
 			fields: { slug },
 		},
 		site: {
-			siteMetadata: { url, twitterHandle },
+			siteMetadata: { url },
 		},
 	} = data;
   //const post = data.markdownRemark;
@@ -45,7 +45,6 @@ export const query = graphql`
     site {
       siteMetadata {
         url
-        twitterHandle
       }
     }
     post: markdownRemark(fields: { slug: { eq: $slug } }) {

@@ -10,7 +10,7 @@ const BlogPost = ({ data }) => {
 			fields: { slug },
 		},
 		site: {
-			siteMetadata: { url, twitterHandle },
+			siteMetadata: { url },
 		},
 	} = data;
 	return (
@@ -19,7 +19,6 @@ const BlogPost = ({ data }) => {
 			<div className="content" dangerouslySetInnerHTML={{ __html: html }} />
 			<Share
 				socialConfig={{
-					twitterHandle,
 					config: {
 						url: `${url}${slug}`,
 						title,
