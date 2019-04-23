@@ -14,7 +14,6 @@ class Video extends React.Component {
       ||nextProps.play!=this.props.play
       ||nextProps.fullScreen!=this.props.fullScreen);
 
-    //console.log("should component updatte??? ", update);
    return update;
   }
   componentDidUpdate() {
@@ -91,7 +90,6 @@ class Video extends React.Component {
     this.loadEnd();
     event.target.mute();
     event.target.playVideo(); 
-    console.log("ready", this.props);
   }
 }
 

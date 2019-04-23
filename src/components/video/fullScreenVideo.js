@@ -39,12 +39,10 @@ class FullScreenVideo extends React.Component {
     constructor(props) {
         super(props);
         const dimensions = this.getDimensions();
-        console.log(dimensions);
         this.state = {
           width: dimensions.width,
           height: dimensions.height
         };
-        console.log("sate", this.state);
         this.closeFullScreen = this.closeFullScreen.bind(this);
     }
    
@@ -56,7 +54,6 @@ class FullScreenVideo extends React.Component {
         update_height = window.innerHeight-40;
         update_width = update_height*16/9;
       }
-      console.log("updatewidh", update_width);
       return { width: update_width, height: update_height };
     }
 

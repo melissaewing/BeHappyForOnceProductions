@@ -85,7 +85,6 @@ class VideoGallery extends React.Component {
         }
     }
     handleMouseEnter(node) {
-        console.log("ahdnle mouse enter");
         this.setState({
             previewNode: node,
             playNode: null
@@ -127,39 +126,32 @@ class VideoGallery extends React.Component {
 
     playFromPreview() {
         const previewNode = this.state.previewNode;
-
-        console.log("previewNode", previewNode);
         this.setState({
             previewNode: null,
             playNode: previewNode,
             pause: false,
             fullScreen: true
         });
-
-        console.log("play from preview", this.state);
     }
+
     mouseOutOverlay() {
-        console.log("mouseout");
         this.setState({
             pause: false
         });
     }
 
     mouseEnterOverlay() {
-        console.log("mouseontter");
         this.setState({
             pause: true
         });
     }
 
     openFullScreen() {
-        console.log("open full screen");
         this.setState({fullScreen: true});
 
     }
 
     closeFullScreen() {
-        console.log("ckose full screen");
      //   let styles = Object.assign({}, this.state.style);
      //   let nodeStyle = Object.assign({}, this.state.style[this.state.playNode.frontmatter.embed]);
     //    delete nodeStyle.transform;

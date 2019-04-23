@@ -43,7 +43,6 @@ class Thumb extends React.Component {
   }
 
   click() {
-    console.log("click");
       this.props.click(this.myRef);
   }
 

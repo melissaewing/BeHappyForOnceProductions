@@ -19,7 +19,6 @@ export default ({ data }) => {
 	} = data;
   //const post = data.markdownRemark;
   //const metaData = data.site.siteMetadata;
-  console.log(data);
   return (
     <div>
     {/*<Header></Header>

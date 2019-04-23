@@ -1,8 +1,7 @@
 module.exports = {  
   siteMetadata: {
-      title: `Title from siteMetadata`,
-      twitterHandle: '@swashata',
-      url: 'https://swas.io',
+      title: `Be Happy For Once`,
+      url: 'https://behappyforonce.com',
       
   },
   pathPrefix: '/', // Adding path for static files
