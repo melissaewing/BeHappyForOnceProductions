@@ -86,26 +86,3 @@ class Header extends React.Component {
 }
 
 export default Header
-
-
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-            embed
-          }
-          fields {
-              slug
-          }
-          excerpt
-        }
-      }
-    }
-  }
-`
