@@ -3,7 +3,7 @@ import InstagramIcon from "./icons/instagram";
 import FacebookIcon from "./icons/facebook";
 import YoutubeIcon from "./icons/youtube";
 import EmailIcon from "./icons/email";
-import {isMobileOnly} from 'react-device-detect';
+import {isMobile, isMobileOnly} from 'react-device-detect';
 import { FacebookProvider, Like } from 'react-facebook';
 
 

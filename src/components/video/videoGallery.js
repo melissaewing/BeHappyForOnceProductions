@@ -1,5 +1,6 @@
 import React from "react"
 import {
+    isMobile,
     isMobileOnly
   } from "react-device-detect";
 
