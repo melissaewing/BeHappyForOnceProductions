@@ -47,10 +47,13 @@ class FullScreenVideo extends React.Component {
 
     render() {
     const videoId = (this.props.playNode ? this.props.playNode.frontmatter.embed : "");
-   
-    let update_width  = window.innerWidth;
-    let update_height = window.innerWidth*9/16;
-    
+    var update_width;
+    var update_height;
+
+    if (window) {
+      update_width = window.innerWidth;
+      update_height = window.innerWidth*9/16;
+    }
  /*   if (update_height + 40 >= window.innerHeight) {
       update_height = window.innerHeight-40;
       update_width = update_height*16/9;
