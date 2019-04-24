@@ -18,8 +18,8 @@ const CloseButton = styled.div `
   position: fixed;
   right: 0;
   top: 0;
-  width: 35px;
-  height: 35px;
+  width: 35px !important;
+  height: 35px !important;
   margin: 5px;
   z-index: 200;
   cursor: pointer;
@@ -38,44 +38,7 @@ const CloseButton = styled.div `
 class FullScreenVideo extends React.Component {
     constructor(props) {
         super(props);
-       
-        this.state = {
-          width: 360,
-          height: 470
-        };
         this.closeFullScreen = this.closeFullScreen.bind(this);
-    }
-   
-    getDimensions() {
-
-      let update_width  = window.innerWidth;
-      let update_height = window.innerWidth*9/16;
-      
-      if (update_height + 40 >= window.innerHeight) {
-        update_height = window.innerHeight-40;
-        update_width = update_height*16/9;
-      }
-      return { update_width, height: update_height };
-    }
-
-    updateDimensions() {
-      const dimensions = this.getDimensions();
-      this.setState({ width: dimensions.width, height: dimensions.height });
-    }
-  
-    /**
-     * Add event listener
-     */
-    componentDidMount() {
-      this.updateDimensions();
-      window.addEventListener("resize", this.updateDimensions.bind(this));
-    }
-  
-    /**
-     * Remove event listener
-     */
-    componentWillUnmount() {
-      window.removeEventListener("resize", this.updateDimensions.bind(this));
     }
 
     closeFullScreen() {
@@ -84,9 +47,18 @@ class FullScreenVideo extends React.Component {
 
     render() {
     const videoId = (this.props.playNode ? this.props.playNode.frontmatter.embed : "");
+   
+    let update_width  = window.innerWidth;
+    let update_height = window.innerWidth*9/16;
+    
+ /*   if (update_height + 40 >= window.innerHeight) {
+      update_height = window.innerHeight-40;
+      update_width = update_height*16/9;
+    }*/
+   
     const opts = {
-        width: this.state.width,
-        height: this.state.height,
+        width: update_width,
+        height: update_height,
         playerVars: { 
             showinfo: 1, 
             controls: 1,
@@ -108,7 +80,7 @@ class FullScreenVideo extends React.Component {
             ref={"player"}
             videoId={this.props.embed}
             id={this.props.id}
-            className={this.props.className}
+            className={fullScreenStyle.fullScreenPlayer}
             opts={opts}
             onReady={this._onReady}
         />

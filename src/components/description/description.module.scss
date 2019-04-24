@@ -6,24 +6,34 @@
 .descriptionText {
     flex: 0 1 15vh;
     font-size: .7em;
-    padding-right: 10px;
+    padding: 0px 10px;
+    border-radius: 10px;
     letter-spacing: .18em;
     overflow-x: none;
     overflow-y: auto;
+     -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.25);
+    box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.25);
+    margin-bottom: 5px;
   }
+
+  .descriptionText.hideDescription {
+    opacity: 0;
+  }
+  
   .title {
     flex: 1 1 35px;
     height: 35px;
     padding: .75rem 0;
     display: flex;
     align-items: center;
-  
   }
   .title h2 {
     color: #858585;
     font-size: large;
   }
 
+  
 @media only screen and (max-width: 700px) and (orientation: portrait) {
 
   .descriptionText {

@@ -57,9 +57,10 @@ class Description extends React.Component {
         <div className={descriptionStyle.title} >
           <h2 dangerouslySetInnerHTML={{ __html:  this.getTitle()}}></h2>
         </div>
-        <div className={descriptionStyle.descriptionText}>
+        <div className={descriptionStyle.descriptionText + " " + (!this.props.previewNode ? descriptionStyle.hideDescription : "") }>
             <span dangerouslySetInnerHTML={{ __html: this.getHtml()}}></span>
         </div>
+        
         {this.props.previewNode != null &&
         <Share embed={this.props.previewNode.frontmatter.embed} title={this.props.previewNode.frontmatter.title}></Share>
         }
