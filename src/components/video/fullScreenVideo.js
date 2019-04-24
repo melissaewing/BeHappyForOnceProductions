@@ -38,23 +38,27 @@ const CloseButton = styled.div `
 class FullScreenVideo extends React.Component {
     constructor(props) {
         super(props);
-        const dimensions = this.getDimensions();
+       
         this.state = {
-          width: dimensions.width,
-          height: dimensions.height
+          width: 360,
+          height: 470
         };
         this.closeFullScreen = this.closeFullScreen.bind(this);
     }
    
+    componentDidMount() {
+      updateDimensions();
+    }
     getDimensions() {
-      /*let update_width  = window.innerWidth;
+
+      let update_width  = window.innerWidth;
       let update_height = window.innerWidth*9/16;
       
       if (update_height + 40 >= window.innerHeight) {
         update_height = window.innerHeight-40;
         update_width = update_height*16/9;
-      }*/
-      return { width: 60, height: 60};//update_width, height: update_height };
+      }
+      return { update_width, height: update_height };
     }
 
     updateDimensions() {
