@@ -69,7 +69,7 @@ class Video extends React.Component {
           iv_load_policy: 3,  // Hide the Video Annotations
           autohide: 1,
           modestbranding: 1,
-          origin: 'http://behappyforonce.com'
+          origin: 'https://www.behappyforonce.com'
         }
 
     };
