@@ -47,14 +47,14 @@ class FullScreenVideo extends React.Component {
     }
    
     getDimensions() {
-      let update_width  = window.innerWidth;
+      /*let update_width  = window.innerWidth;
       let update_height = window.innerWidth*9/16;
       
       if (update_height + 40 >= window.innerHeight) {
         update_height = window.innerHeight-40;
         update_width = update_height*16/9;
-      }
-      return { width: update_width, height: update_height };
+      }*/
+      return { width: 60, height: 60};//update_width, height: update_height };
     }
 
     updateDimensions() {
