@@ -50,7 +50,7 @@ class FullScreenVideo extends React.Component {
     var update_width;
     var update_height;
 
-    if (window) {
+    if (typeof window != 'undefined') {
       update_width = window.innerWidth;
       update_height = window.innerWidth*9/16;
     }
