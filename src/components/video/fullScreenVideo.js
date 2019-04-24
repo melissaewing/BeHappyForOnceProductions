@@ -46,9 +46,6 @@ class FullScreenVideo extends React.Component {
         this.closeFullScreen = this.closeFullScreen.bind(this);
     }
    
-    componentDidMount() {
-      updateDimensions();
-    }
     getDimensions() {
 
       let update_width  = window.innerWidth;
