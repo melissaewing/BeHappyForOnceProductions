@@ -10,7 +10,7 @@ import x from '../../images/x.gif'
 import fullScreenStyle from "./fullScreenVideo.module.css"
 
 const CloseButton = styled.div `
-  background: rgba(0,0,0,.5) url(${x});
+  background: url(${x});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -18,13 +18,15 @@ const CloseButton = styled.div `
   position: fixed;
   right: 0;
   top: 0;
-  width: 35px !important;
-  height: 35px !important;
+  width: 25px !important;
+  height: 25px !important;
   margin: 5px;
   z-index: 200;
   cursor: pointer;
+  opacity: .5;
+  z-index: 1000;
   &:hover {
-    background-color: rgba(0,0,0,0);
+    opacity: 1;
   }
   &:before {
     position: absolute;
@@ -40,6 +42,13 @@ class FullScreenVideo extends React.Component {
         super(props);
         this.closeFullScreen = this.closeFullScreen.bind(this);
     }
+/*
+    componentDidUpdate(prevProps) {
+      if (this.props.playNode !== prevProps.playNode) {
+        setTimeout(() => {
+        }, 1000);
+      }
+    }*/
 
     closeFullScreen() {
       this.props.closeFullScreen();
@@ -53,12 +62,12 @@ class FullScreenVideo extends React.Component {
     if (typeof window != 'undefined') {
       update_width = window.innerWidth;
       update_height = window.innerWidth*9/16;
-    }
- /*   if (update_height + 40 >= window.innerHeight) {
+    
+    if (update_height + 40 >= window.innerHeight) {
       update_height = window.innerHeight-40;
       update_width = update_height*16/9;
-    }*/
-   
+    }
+  }
     const opts = {
         width: update_width,
         height: update_height,
@@ -68,13 +77,7 @@ class FullScreenVideo extends React.Component {
             autoplay: 0,
             version: 3,
             playlist: videoId,
-            loop: 1,
-            start: 10,
-            fs: 0,              // Hide the full screen button
-            cc_load_policy: 0, // Hide closed captions
-            iv_load_policy: 3,  // Hide the Video Annotations
-            autohide: 0,
-            modestbranding: 1
+            loop: 1
         }
     };
     return (
@@ -87,7 +90,7 @@ class FullScreenVideo extends React.Component {
             opts={opts}
             onReady={this._onReady}
         />
-        <CloseButton onClick={this.closeFullScreen} className={isMobile ? fullScreenStyle.hidden : ""}></CloseButton>
+        <CloseButton onClick={this.closeFullScreen} id="closeBtn" className={isMobile ? fullScreenStyle.hidden : ""}></CloseButton>
       </div>
     );
   }

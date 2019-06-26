@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    overflow: scroll;
 }
 .textContainer {
     flex: 1 1 200px;

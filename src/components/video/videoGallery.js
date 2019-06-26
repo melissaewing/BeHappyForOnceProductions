@@ -174,10 +174,10 @@ class VideoGallery extends React.Component {
         }
       }
     render() {
-        console.log("playnode", this.state);
+
+//    <Loading loading={this.state.loading}></Loading>
     return (
     <div>
-    <Loading loading={this.state.loading}></Loading>
 
     <FullScreenVideo playNode={this.state.playNode} closeFullScreen={this.closeFullScreen}></FullScreenVideo>
 

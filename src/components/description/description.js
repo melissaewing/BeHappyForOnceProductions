@@ -61,10 +61,10 @@ class Description extends React.Component {
             <span dangerouslySetInnerHTML={{ __html: this.getHtml()}}></span>
         </div>
         
-        {this.props.previewNode != null &&
+        {/*this.props.previewNode != null &&
         <Share embed={this.props.previewNode.frontmatter.embed} title={this.props.previewNode.frontmatter.title}></Share>
-        }
-         {this.props.previewNode == null &&
+        */}
+         {/*this.props.previewNode == null &&*/
         <Social bottom={true}></Social>
         }
       </div>
