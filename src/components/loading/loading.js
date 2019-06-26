@@ -113,7 +113,10 @@ export default class Loading extends React.Component {
         }
     }
     render() {
-        var viewBox = "0 0 " + window.innerWidth + " " + window.innerHeight;
+        var viewBox = "0 0 0 0";
+        if (typeof window != 'undefined') {
+            viewBox = "0 0 " + window.innerWidth + " " + window.innerHeight;
+        }
         return (
         <div id={loadingStyles.loadContainer} className={(this.state.loaded && !this.props.loading ? loadingStyles.hide : "")}>
             <svg id="svg" className={loadingStyles.svg + (!this.props.loading ? " " + loadingStyles.flash : "")} viewBox={viewBox}></svg>
