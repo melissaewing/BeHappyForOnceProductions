@@ -1,6 +1,6 @@
 #head {
     background: red;
-    z-index: 1200;
+    z-index: 3000;
 }
 
 @keyframes flicker-out-anim {

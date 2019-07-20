@@ -5,7 +5,6 @@ import Header from "../components/header/header"
 import Title from "../components/title/title"
 import GlitchVideo from "../components/video/glitchVideo"
 
-import Arrow from "../components/svg/arrow"
 import gvcStyle from "../components/video/glitchVideoContainer.module.css"
 
 export default class Index extends React.Component {
@@ -23,7 +22,6 @@ export default class Index extends React.Component {
         <Loading loading={this.state.loading}></Loading>
         <Header loading={this.state.loading}></Header>
         <Title></Title>
-        {/*<Arrow/>*/}
         <div className={gvcStyle.videoContainer}>
             <div className={gvcStyle.videoBackground}>
                 <div className={gvcStyle.videoForeground}>

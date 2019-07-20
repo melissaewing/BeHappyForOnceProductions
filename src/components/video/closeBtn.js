@@ -19,7 +19,7 @@ height: 25px !important;
 margin: 5px;
 cursor: pointer;
 opacity: 0;
-z-index: 1000;
+z-index: 3000;
 &:hover {
   opacity: 1;
 }
