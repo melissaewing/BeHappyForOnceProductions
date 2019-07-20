@@ -71,7 +71,7 @@ class Header extends React.Component {
                 </a>
             </div>
 
-            <div className="navHover" onMouseEnter={this.mouseEnter}></div>
+          {/*  <div className="navHover" onMouseEnter={this.mouseEnter}></div>*/}
             <nav onMouseLeave={this.closeNav}>
                 <ul id="menu">
                     <MenuItem to="/" name="home"/>
