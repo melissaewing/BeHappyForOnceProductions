@@ -70,12 +70,9 @@ $brand-colors: (
 
 @media only screen and (max-width: 375px) {
 	.shareText {
-		font-size: 1em !important;
+		display: none;
 	}
 }
 
 @media only screen and (max-width: 320px) {
-	.shareText {
-		font-size: .75em !important;
-	}
 }
