@@ -16,9 +16,10 @@ export default ({ data }) => {
     <div className={aboutStyles.aboutContainer}>
       <div className={aboutStyles.textContainer}>
         <div className={aboutStyles.title}>
-          <Shatter>
+          {!isMobile && <Shatter>
             <SVG position="relative" icon="aboutText"/>
-          </Shatter>
+          </Shatter>}
+          {isMobile && <SVG position="relative" icon="aboutText"/>}
         </div>
         <FadeIn className={aboutStyles.aboutText}>Drew Rosenthal is an award winning video artist making content for Brooklyn and NYC based musicians and performance artists. His work combines alternative comedy, glitch art, and social media signifiers to create post-reality spectacles.</FadeIn>
       </div>

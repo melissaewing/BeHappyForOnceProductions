@@ -58,7 +58,7 @@ class Description extends React.Component {
         <div className={descriptionStyle.descriptionText + " " + (!this.props.previewNode ? descriptionStyle.hideDescription : "") }>
             <span dangerouslySetInnerHTML={{ __html: this.getHtml()}}></span>
         </div>
-        }
+        
       </div>
     );
   }

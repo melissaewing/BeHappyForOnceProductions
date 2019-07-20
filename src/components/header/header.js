@@ -12,21 +12,11 @@ class Header extends React.Component {
           menuClass: ""
       };
       this.toggleNav = this.toggleNav.bind(this);
-      this.mouseEnter = this.mouseEnter.bind(this);
       this.openNav = this.openNav.bind(this);
       this.closeNav = this.closeNav.bind(this);
-
-      this.openTimeout = null;
-
     }
 
     componentDidUpdate(prevProps) {
-      if (this.props.loading !== prevProps.loading) {
-        setTimeout(() => {
-          this.openNav();
-          setTimeout(this.closeNav,3000);
-        }, 1000);
-      }
     }
 
     toggleNav() {
@@ -44,16 +34,7 @@ class Header extends React.Component {
       });
     }
 
-    mouseEnter() {
-      this.openTimeout = setTimeout(() => {
-         this.openNav();
-      }, 200);
-    }
-
     closeNav() {
-      if (this.openTimeout) {
-        clearTimeout(this.openTimeout);
-      }
       this.setState({
         open: false,
         menuClass: ""
@@ -71,8 +52,7 @@ class Header extends React.Component {
                 </a>
             </div>
 
-          {/*  <div className="navHover" onMouseEnter={this.mouseEnter}></div>*/}
-            <nav onMouseLeave={this.closeNav} className={this.state.menuClass}>
+            <nav className={this.state.menuClass}>
                 <ul id="menu">
                     <MenuItem to="/" name="home"/>
                     <MenuItem to="/about" name="about"/>
