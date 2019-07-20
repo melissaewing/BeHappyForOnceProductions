@@ -12,7 +12,6 @@ import styled from 'styled-components'
 import x from '../../images/x.gif'
 
 import descriptionStyle from "./description.module.scss"
-import Social from "../social/social"
 
 
 class Description extends React.Component {    
@@ -59,7 +58,6 @@ class Description extends React.Component {
         <div className={descriptionStyle.descriptionText + " " + (!this.props.previewNode ? descriptionStyle.hideDescription : "") }>
             <span dangerouslySetInnerHTML={{ __html: this.getHtml()}}></span>
         </div>
-        <Social bottom={true}></Social>
         }
       </div>
     );

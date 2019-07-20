@@ -10,10 +10,12 @@ import TV from "./TV"
 import VideoGalleryContainer from "./videoGalleryContainer"
 import Video from "./video"
 import FullScreenVideo from "./fullScreenVideo"
+import Share from "../social/Share"
 
 import styled from 'styled-components'
 import fsouter from '../../images/fullscreenouter.png'
 import fsinner from '../../images/fullscreeninner.png'
+import PlayButton from "../svg/playButton"
 
 import galleryStyle from "./videoGallery.module.scss"
 

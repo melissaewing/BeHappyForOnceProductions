@@ -3,12 +3,14 @@ import { graphql } from "gatsby"
 
 import Header from "../components/header/header"
 import VideoGallery from "../components/video/videoGallery";
+import Social from "../components/social/social"
 
 export default ({ data }) => {
   return (
   <div>
       <Header></Header>
       <VideoGallery data={data}/>
+      <Social></Social>
   </div>
   )
 }
