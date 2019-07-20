@@ -2,9 +2,6 @@
   
   /* NAV STYLES
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  header {
-      width: 100%;
-  }
 
   .navHover {
     position:fixed;
@@ -20,7 +17,7 @@
       height: 50px;
       width: 100%;
       background: #000000b8;
-      z-index: 1200;
+      z-index: 1000;
 
      
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.45);
@@ -30,8 +27,9 @@
       -webkit-transition: all .9s ease-out;
       transition: all .9s ease-out;
 
-      opacity: 0;
-      transform: translateY(-50px);
+      /*
+      opacity: 1;
+      transform: translateY(-50px);*/
   }
 
   .open-menu ~ nav {
@@ -121,10 +119,28 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   
   @media only screen and (max-width: 500px) {
+   
+    nav {
+      width: 50px;
+      height: 50px;
+      background-color: #000000e3;
+      display: none;
+    }
 
-    .header-top {
-      height: 75px;
-      width: 75px;
+    nav ul {
+      flex-direction: column;
+    }
+
+    .open-menu ~ nav {
+      display: block;
+      width: 100%;
+      height: 200px;
+    }
+
+    .toggle-btn {
+      height: 50px;
+      width: 50px;
+      z-index: 3000;
       position: fixed;
       top: 0;
       box-sizing: border-box;
@@ -164,20 +180,4 @@
       -webkit-transform: rotateZ(-45deg);
               transform: rotateZ(-45deg);
     }
-
-    nav {
-      height: 200px;
-      background-color: #000000e3;
-    }
-
-    nav ul {
-      flex-direction: column;
-    }
   }
-  
-  
-@media only screen {
-  .navHover {
-    display: none;
-  }
-}

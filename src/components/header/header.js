@@ -62,9 +62,9 @@ class Header extends React.Component {
 
     render() {
         return (
-        <header>
-            <div className={"header-top " + this.state.menuClass}>
-                <a id="toggle" className="toggle-menu" href="#" onClick={this.toggleNav}>
+        <header >
+            <div className={"toggle-btn " + this.state.menuClass} onClick={this.toggleNav}>
+                <a id="toggle" className="toggle-menu" href="#">
                     <i></i>
                     <i></i>
                     <i></i>
@@ -72,7 +72,7 @@ class Header extends React.Component {
             </div>
 
           {/*  <div className="navHover" onMouseEnter={this.mouseEnter}></div>*/}
-            <nav onMouseLeave={this.closeNav}>
+            <nav onMouseLeave={this.closeNav} className={this.state.menuClass}>
                 <ul id="menu">
                     <MenuItem to="/" name="home"/>
                     <MenuItem to="/about" name="about"/>
