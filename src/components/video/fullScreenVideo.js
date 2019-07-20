@@ -21,10 +21,9 @@ const CloseButton = styled.div `
   width: 25px !important;
   height: 25px !important;
   margin: 5px;
-  z-index: 200;
   cursor: pointer;
   opacity: .5;
-  z-index: 1000;
+  z-index: 100;
   &:hover {
     opacity: 1;
   }

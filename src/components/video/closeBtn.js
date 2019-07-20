@@ -17,7 +17,6 @@ top: 0;
 width: 25px !important;
 height: 25px !important;
 margin: 5px;
-z-index: 200;
 cursor: pointer;
 opacity: 0;
 z-index: 1000;

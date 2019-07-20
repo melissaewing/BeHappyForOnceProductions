@@ -13,7 +13,6 @@ class Social extends React.Component {
   render() {
     return(
     <div className={"link-social " + (isMobile ? "mobile " : " ") + (this.props.bottom != null ? "bottom" : "")}>
-      <span className="shareText">Follow me</span>
       <a href="https://www.instagram.com/behappyforonceproductions/" target="_blank">
         <InstagramIcon isMobile={isMobileOnly}></InstagramIcon>
       </a>
