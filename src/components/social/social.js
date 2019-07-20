@@ -2,12 +2,10 @@ import React from 'react';
 import InstagramIcon from "./icons/instagram";
 import FacebookIcon from "./icons/facebook";
 import YoutubeIcon from "./icons/youtube";
-import EmailIcon from "./icons/email";
 import {isMobile, isMobileOnly} from 'react-device-detect';
-import { FacebookProvider, Like } from 'react-facebook';
 
 
-import './share.scss';
+import './social.scss';
 
 class Social extends React.Component {
   render() {

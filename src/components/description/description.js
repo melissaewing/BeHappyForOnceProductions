@@ -12,7 +12,6 @@ import styled from 'styled-components'
 import x from '../../images/x.gif'
 
 import descriptionStyle from "./description.module.scss"
-import Share from "../social/Share"
 import Social from "../social/social"
 
 
@@ -60,11 +59,6 @@ class Description extends React.Component {
         <div className={descriptionStyle.descriptionText + " " + (!this.props.previewNode ? descriptionStyle.hideDescription : "") }>
             <span dangerouslySetInnerHTML={{ __html: this.getHtml()}}></span>
         </div>
-        
-        {/*this.props.previewNode != null &&
-        <Share embed={this.props.previewNode.frontmatter.embed} title={this.props.previewNode.frontmatter.title}></Share>
-        */}
-         {/*this.props.previewNode == null &&*/
         <Social bottom={true}></Social>
         }
       </div>
