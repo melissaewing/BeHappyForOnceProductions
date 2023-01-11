@@ -21,7 +21,7 @@
     "gatsby-plugin-sass": "^2.0.10",
     "gatsby-source-filesystem": "^2.0.18",
     "gatsby-source-youtube": "^1.0.1",
-    "gatsby-transformer-remark": "^2.2.2",
+    "gatsby-transformer-remark": "^5.25.1",
     "i": "^0.3.6",
     "imports-loader": "^0.8.0",
     "jquery": "^3.3.1",
